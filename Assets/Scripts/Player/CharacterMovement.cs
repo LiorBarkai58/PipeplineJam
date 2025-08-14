@@ -13,9 +13,14 @@ namespace Player
 
         [SerializeField] private Collider2D collider;
 
+        [SerializeField] private Animator animator;
+
+        [SerializeField] private SpriteRenderer sprite;
+
         [Header("Project References")] [SerializeField]
         private InputReader input;
 
+        private static readonly int XVelocity = Animator.StringToHash("xVelocity");
 
         private bool _isJumping = false;
         private void Start()
@@ -29,6 +34,8 @@ namespace Player
             // Vector3 newPosition = transform.position + input.Direction * (speed * Time.fixedDeltaTime);
             // rb.MovePosition(newPosition);
             rb.linearVelocityX = input.Direction.x * movementData.Speed;
+            animator.SetFloat(XVelocity, Mathf.Abs(rb.linearVelocityX) > 0 ? 1 : -1);
+            sprite.flipX = rb.linearVelocityX > 0;
             HandleGravity();
         }
 
