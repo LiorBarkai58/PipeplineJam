@@ -7,7 +7,9 @@ namespace Input
     [CreateAssetMenu(fileName = "InputReader", menuName = "Input/InputReader")]
     public class InputReader : ScriptableObject, PlayerInput.IPlayerActions
     {
-            
+        public event UnityAction Jump = delegate { };
+        public event UnityAction JumpReleased = delegate { };
+        public Vector3 Direction => new Vector3(inputActions.Player.Move.ReadValue<Vector2>().x, 0, 0);
         
         private PlayerInput inputActions;
         
@@ -56,7 +58,15 @@ namespace Input
 
         public void OnJump(InputAction.CallbackContext context)
         {
-            //NOOP
+            if (context.started)
+            {
+                Jump?.Invoke();
+            }
+            else if (context.canceled)
+            {
+                JumpReleased?.Invoke();
+                
+            }
         }
     }
 }
