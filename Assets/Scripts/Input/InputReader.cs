@@ -7,13 +7,8 @@ namespace Input
     [CreateAssetMenu(fileName = "InputReader", menuName = "Input/InputReader")]
     public class InputReader : ScriptableObject, PlayerInput.IPlayerActions
     {
-        public bool isDrawing { get; private set; } = false;
+            
         
-        public event UnityAction OnPause;
-        public event UnityAction OnDrawFinish;
-        public event UnityAction OnDrawStart;
-        
-
         private PlayerInput inputActions;
         
         void OnEnable() {
