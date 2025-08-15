@@ -35,7 +35,8 @@ namespace Player
             // rb.MovePosition(newPosition);
             rb.linearVelocityX = input.Direction.x * movementData.Speed;
             animator.SetFloat(XVelocity, Mathf.Abs(rb.linearVelocityX) > 0 ? 1 : -1);
-            sprite.flipX = rb.linearVelocityX > 0;
+            if (rb.linearVelocityX > 0) sprite.flipX = true;
+            else if (rb.linearVelocityX < 0) sprite.flipX = false;
             HandleGravity();
         }
 
