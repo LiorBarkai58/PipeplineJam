@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: -6790916442981341475}
   - component: {fileID: 3635068328290549017}
   - component: {fileID: 5027026214709861611}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StompingFish
   m_TagString: Player
   m_Icon: {fileID: 0}
