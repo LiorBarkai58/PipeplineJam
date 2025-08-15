@@ -24,7 +24,7 @@ namespace Player
 
         private bool _isJumping = false;
 
-        private bool _inputEnabled = true;
+        protected bool _inputEnabled = true;
         protected virtual void Start()
         {
             input.Jump += HandleJump;

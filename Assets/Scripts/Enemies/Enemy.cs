@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -28,11 +29,13 @@ public abstract class Enemy: MonoBehaviour
                 OnHitPlayerEvent?.Invoke();
                 Debug.Log("Hit Player");
             }
-            else
-            {
-                OnEnemyDeathEvent?.Invoke(scoreGain);
-                Destroy(this.gameObject);
-            }
+            
         }
+    }
+
+    private void OnDestroy()
+    {
+        OnEnemyDeathEvent?.Invoke(scoreGain);
+        
     }
 }

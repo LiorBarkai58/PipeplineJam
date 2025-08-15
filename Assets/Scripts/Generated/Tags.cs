@@ -10,4 +10,5 @@ public static class Tags
 	public const string GameController = "GameController";
 	public const string EndPoint = "EndPoint";
 	public const string BreakableWall = "BreakableWall";
+	public const string Enemy = "Enemy";
 }
