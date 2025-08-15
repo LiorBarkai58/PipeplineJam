@@ -9,6 +9,8 @@ namespace Input
     {
         public event UnityAction Jump = delegate { };
         public event UnityAction JumpReleased = delegate { };
+
+        public event UnityAction Action = delegate { };
         public Vector3 Direction => new Vector3(inputActions.Player.Move.ReadValue<Vector2>().x, 0, 0);
         
         private PlayerInput inputActions;
@@ -48,7 +50,7 @@ namespace Input
 
         public void OnAttack(InputAction.CallbackContext context)
         {
-            //NOOP
+            if(context.started) Action?.Invoke();
         }
 
         public void OnCrouch(InputAction.CallbackContext context)
