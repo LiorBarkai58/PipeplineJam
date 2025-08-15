@@ -22,20 +22,15 @@ public abstract class Enemy: MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == Tags.Player)
         {
-            if (collider.bounds.max.y - detectionRangeOffset > other.collider.bounds.min.y)
-            {
-                OnHitPlayerEvent?.Invoke();
-                Debug.Log("Hit Player");
-            }
-            
+            OnHitPlayerEvent?.Invoke();
+            Debug.Log("Hit Player");
         }
     }
 
     private void OnDestroy()
     {
         OnEnemyDeathEvent?.Invoke(scoreGain);
-        
     }
 }
