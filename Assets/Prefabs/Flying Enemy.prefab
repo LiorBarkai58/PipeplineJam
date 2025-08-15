@@ -49,11 +49,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collider: {fileID: 2075253552309087350}
   detectionRangeOffset: 0.1
-  speed: 0.5
+  speed: 5
   scoreGain: 0
   detector: {fileID: 6011002115251445285}
-  targetMinDistance: 0.5
-  targetMaxDistance: 1.5
+  animator: {fileID: 2515480898538083887}
+  targetMinDistance: 5
+  targetMaxDistance: 8
 --- !u!61 &2075253552309087350
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -168,7 +169,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1
+  m_Radius: 12
 --- !u!114 &6011002115251445285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7121127950332061588}
   - component: {fileID: 6937451237064062315}
+  - component: {fileID: 2515480898538083887}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -257,7 +259,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 134e186e9863be949886ea2b22bc8c2d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -269,3 +271,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2515480898538083887
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7072518755487970068}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e33cfdee74ce1f74399a196f9e91d0a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

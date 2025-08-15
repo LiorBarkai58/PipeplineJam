@@ -34,7 +34,7 @@ namespace Player.FishWithLegs
         {
             if (CheckGround() || _isStomping) return;
             ToggleInput(false);
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocityY = 15f;
             _isStomping = true;
             legStompHandler.gameObject.SetActive(true);
         }

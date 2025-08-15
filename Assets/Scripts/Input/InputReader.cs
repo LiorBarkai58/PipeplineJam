@@ -64,13 +64,13 @@ namespace Input
         {
             if (context.started)
             {
-                Jump?.Invoke();
                 JumpHeld = true;
+                Jump?.Invoke();
             }
             else if (context.canceled)
             {
-                JumpReleased?.Invoke();
                 JumpHeld = false;
+                JumpReleased?.Invoke();
 
             }
         }
