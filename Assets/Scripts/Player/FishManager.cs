@@ -14,6 +14,8 @@ namespace Player
             add => endPointCheck.OnEndPointReached += value;
             remove => endPointCheck.OnEndPointReached -= value;
         }
+
+        public event UnityAction OnTakeDamage;
         public void ToggleControls(bool value) => fishController.ToggleInput(value);
         
     }
