@@ -13,17 +13,16 @@ namespace Player.FishWithLegs
         
         private StopwatchTimer _airTimer = new StopwatchTimer();
 
+        public bool CanBreak = false;
         private void OnEnable()
         {
             _airTimer?.Start();
-            Debug.Log("Enabled");
         }
 
         private void OnDisable()
         {
             _airTimer?.Stop();
             _airTimer?.Reset();
-            Debug.Log("disable");
             
         }
 
@@ -35,7 +34,7 @@ namespace Player.FishWithLegs
         private void OnTriggerEnter2D(Collider2D other)
         {
             Debug.Log($"Passed: {_airTimer.TimePassed}");
-            if (!other.CompareTag(Tags.BreakableWall)) return;
+            if (!other.CompareTag(Tags.BreakableWall) || !CanBreak) return;
             Destroy(other.gameObject);
             OnStomp?.Invoke();
         }

@@ -75,7 +75,7 @@ namespace Player
             return grounded;
         }
 
-        private void HandleMovement()
+        protected virtual void HandleMovement()
         {
             rb.linearVelocityX = input.Direction.x * movementData.Speed;
             animator.SetFloat(XVelocity, Mathf.Abs(rb.linearVelocityX) > 0 ? 1 : -1);

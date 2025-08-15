@@ -26,6 +26,7 @@ public abstract class Enemy: MonoBehaviour
         {
             OnHitPlayerEvent?.Invoke();
             Debug.Log("Hit Player");
+            
         }
     }
 

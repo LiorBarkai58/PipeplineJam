@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minAirTime: 0.05
+  CanBreak: 0
 --- !u!61 &4160119821056363151
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -356,6 +357,7 @@ MonoBehaviour:
   legStompHandler: {fileID: 2263434059464541536}
   stompingGravityMultiplier: 7
   stompingBounceStrength: 5
+  initialStompJumpStrength: 5
 --- !u!50 &3635068328290549017
 Rigidbody2D:
   serializedVersion: 5

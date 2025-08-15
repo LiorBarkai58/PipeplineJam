@@ -1053,8 +1053,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList:
-  - {fileID: 575316087}
   - {fileID: 828901064}
+  - {fileID: 575316087}
   screenShakeSource: {fileID: 699800829}
 --- !u!4 &699800831
 Transform:
