@@ -1,4 +1,5 @@
 using UnityEngine;
+using Utilities;
 
 namespace Player.FishWithLegs
 {
@@ -7,12 +8,20 @@ namespace Player.FishWithLegs
         [Header("Stomping references")]
         [SerializeField] private LegStomp legStompHandler;
 
+        [Header("Stomping data")] [SerializeField]
+        private float stompingGravityMultiplier = 7;
+
+        [SerializeField] private float stompingBounceStrength = 5;
+        
+        
+
         private bool _isStomping = false;
         protected override void Start()
         {
             base.Start();
             input.Action += StartStomp;
             legStompHandler.OnStomp += Stomped;
+            legStompHandler.gameObject.SetActive(false);
         }
 
         protected override void FixedUpdate()
@@ -27,13 +36,16 @@ namespace Player.FishWithLegs
             ToggleInput(false);
             rb.linearVelocity = Vector2.zero;
             _isStomping = true;
+            legStompHandler.gameObject.SetActive(true);
         }
 
         private void Stomped()
         {
             _isStomping = false;
             ToggleInput(true);
-            rb.linearVelocityY = 5;
+            rb.linearVelocityY = stompingBounceStrength;
+            legStompHandler.gameObject.SetActive(false);
+            
 
         }
 
@@ -41,7 +53,7 @@ namespace Player.FishWithLegs
         {
             if (_isStomping)
             {
-                rb.gravityScale = movementData.FallingGravityMultiplier * 7;
+                rb.gravityScale = movementData.FallingGravityMultiplier * stompingGravityMultiplier;
             }
             else if (rb.linearVelocityY < 0) // Falling
             {

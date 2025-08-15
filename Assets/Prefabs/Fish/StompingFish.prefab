@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa30c5f856c643c0b7790a36d9d6be40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minAirTime: 0.05
 --- !u!61 &4160119821056363151
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -270,7 +271,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.28914726, y: -0.3990234}
+  m_Offset: {x: -0.28914726, y: -0.43950406}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -280,7 +281,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.83807755, y: 0.20195317}
+  m_Size: {x: 0.83807755, y: 0.28291446}
   m_EdgeRadius: 0
 --- !u!1 &4500531936296067731
 GameObject:
@@ -353,6 +354,8 @@ MonoBehaviour:
   sprite: {fileID: 1109197332870037331}
   input: {fileID: 11400000, guid: f92884d5707d11142ac266d2203b7ce0, type: 2}
   legStompHandler: {fileID: 2263434059464541536}
+  stompingGravityMultiplier: 7
+  stompingBounceStrength: 5
 --- !u!50 &3635068328290549017
 Rigidbody2D:
   serializedVersion: 5
@@ -414,7 +417,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.3, y: 0}
+  m_Offset: {x: -0.2970474, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -424,5 +427,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.0246665, y: 0.9755801}
+  m_Size: {x: 0.8534103, y: 0.9755801}
   m_EdgeRadius: 0
