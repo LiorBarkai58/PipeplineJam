@@ -12,7 +12,7 @@ public abstract class Enemy: MonoBehaviour
     [SerializeField] protected BoxCollider2D collider;
     
     //Vars
-    [SerializeField] protected float detectionRangeOffset = 0.1f;
+    [SerializeField] private float detectionRangeOffset = 0.1f;
     [SerializeField] protected float speed;
     [SerializeField] protected int scoreGain;
     

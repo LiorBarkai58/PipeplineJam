@@ -23,7 +23,7 @@ public class FlyingEnemy : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (this.transform.position != target)
+        if (transform.position != target)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
         }
