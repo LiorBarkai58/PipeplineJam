@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,7 +12,7 @@ public abstract class Enemy: MonoBehaviour
     [SerializeField] protected BoxCollider2D collider;
     
     //Vars
-    [SerializeField] protected float detectionRangeOffset = 0.1f;
+    [SerializeField] private float detectionRangeOffset = 0.1f;
     [SerializeField] protected float speed;
     [SerializeField] protected int scoreGain;
     
@@ -28,11 +29,13 @@ public abstract class Enemy: MonoBehaviour
                 OnHitPlayerEvent?.Invoke();
                 Debug.Log("Hit Player");
             }
-            else
-            {
-                OnEnemyDeathEvent?.Invoke(scoreGain);
-                Destroy(this.gameObject);
-            }
+            
         }
+    }
+
+    private void OnDestroy()
+    {
+        OnEnemyDeathEvent?.Invoke(scoreGain);
+        
     }
 }
