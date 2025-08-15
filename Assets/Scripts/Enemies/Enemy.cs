@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public abstract class Enemy: MonoBehaviour
 {
     //Events
-    public event UnityAction OnHitPlayerEvent; 
+    protected event UnityAction OnHitPlayerEvent; 
     
     //References
     [SerializeField] protected BoxCollider2D collider;
