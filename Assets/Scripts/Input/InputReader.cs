@@ -13,6 +13,8 @@ namespace Input
         public event UnityAction Action = delegate { };
         public Vector3 Direction => new Vector3(inputActions.Player.Move.ReadValue<Vector2>().x, 0, 0);
         
+        public bool JumpHeld { get; private set; }
+        
         private PlayerInput inputActions;
         
         void OnEnable() {
@@ -62,12 +64,14 @@ namespace Input
         {
             if (context.started)
             {
+                JumpHeld = true;
                 Jump?.Invoke();
             }
             else if (context.canceled)
             {
+                JumpHeld = false;
                 JumpReleased?.Invoke();
-                
+
             }
         }
     }

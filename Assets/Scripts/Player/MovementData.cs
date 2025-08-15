@@ -31,5 +31,9 @@ namespace Player
         public float GroundCheckRadius => groundCheckRadius;
         [SerializeField] private LayerMask groundLayer;
         public LayerMask GroundLayer => groundLayer;
+
+        [SerializeField] private float jumpBufferTime = 0.1f;
+        
+        public float JumpBufferTime => jumpBufferTime;
     }
 }

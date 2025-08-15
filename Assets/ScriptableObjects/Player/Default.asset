@@ -21,3 +21,4 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  jumpBufferTime: 0.1
