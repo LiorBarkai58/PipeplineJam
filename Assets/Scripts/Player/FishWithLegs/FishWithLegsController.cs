@@ -5,6 +5,9 @@ namespace Player.FishWithLegs
 {
     public class FishWithLegsController : CharacterMovement
     {
+        private static readonly int IsStomping = Animator.StringToHash("isStomping");
+        private static readonly int YVelocity = Animator.StringToHash("yVelocity");
+
         [Header("Stomping references")]
         [SerializeField] private LegStomp legStompHandler;
 
@@ -29,6 +32,7 @@ namespace Player.FishWithLegs
             base.FixedUpdate();
             if(_isStomping && CheckGround() && rb.linearVelocityY <= 0) Stomped();
             if (_isStomping) legStompHandler.CanBreak = rb.linearVelocityY < 0;
+            animator.SetFloat(YVelocity, rb.linearVelocityY);
         }
 
         private void StartStomp()
@@ -37,6 +41,7 @@ namespace Player.FishWithLegs
             rb.linearVelocity = new Vector2(0, initialStompJumpStrength);
             legStompHandler.CanBreak = rb.linearVelocityY < 0;
             _isStomping = true;
+            animator.SetBool(IsStomping, _isStomping);
             legStompHandler.gameObject.SetActive(true);
             Debug.Log("Start stomp");
         }
@@ -52,6 +57,7 @@ namespace Player.FishWithLegs
             Debug.Log("End stomp");
             
             _isStomping = false;
+            animator.SetBool(IsStomping, _isStomping);
             rb.linearVelocityY = stompingBounceStrength;
             legStompHandler.gameObject.SetActive(false);
             

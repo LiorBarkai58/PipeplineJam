@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 2075253552309087350}
-  combat: {fileID: 0}
+  combat: {fileID: 4961428103783440595}
   detectionRangeOffset: 0.1
   speed: 5
   scoreGain: 0
@@ -389,6 +389,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
+--- !u!114 &4961428103783440595 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1373519224502409821, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
+  m_PrefabInstance: {fileID: 6329018623323290254}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3e7ea2670145a79eb24c57b657b5f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7226423745484717984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3718947431720961326, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
