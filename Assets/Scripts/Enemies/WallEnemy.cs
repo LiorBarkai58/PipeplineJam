@@ -1,8 +1,12 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WallEnemy : Enemy
 {
+    //References
+    [SerializeField] private EnemyDetection detector;
+    
     //Vars
     [SerializeField] private float distance;
 
@@ -10,6 +14,7 @@ public class WallEnemy : Enemy
 
     private void Awake()
     {
+        detector.OnTriggerEnterEvent += OnPlayerInRange;
         target = GetTarget();
     }
 
@@ -27,7 +32,13 @@ public class WallEnemy : Enemy
     {
         float newY = transform.position.y + distance * direction;
         direction *= -1;
-        transform.localScale = new Vector3(1, direction, 1);
+        transform.localScale = new Vector3(1, -direction, 1);
         return new Vector3(transform.position.x ,newY, transform.position.z);
     }
+
+    public void OnPlayerInRange(Collider2D player)
+    {
+        Debug.Log("Crab Attack");
+    }
+    
 }

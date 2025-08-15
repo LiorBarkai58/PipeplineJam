@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     //References
     [SerializeField] private List<Enemy> enemyList;
-    
+
+    [SerializeField] private CinemachineImpulseSource screenShakeSource;
     //Vars
     private int score;
 
@@ -38,6 +41,13 @@ public class GameManager : MonoBehaviour
 
     public void PlayerHit()
     {
-        
+        screenShakeSource.GenerateImpulseWithForce(1);
     }
+    
+    #if UNITY_EDITOR
+    private void OnValidate()
+    {
+        enemyList = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
+    }
+#endif
 }
