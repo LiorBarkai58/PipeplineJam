@@ -1,6 +1,7 @@
     using System;
 using Input;
 using UnityEngine;
+using Utilities;
 
 namespace Player
 {
@@ -25,8 +26,14 @@ namespace Player
         private bool _isJumping = false;
 
         protected bool _inputEnabled = true;
+
+        private bool _bufferJump = false;
+        
+        private CountdownTimer _jumpBufferTimer;
         protected virtual void Start()
         {
+            _jumpBufferTimer = new CountdownTimer(movementData.JumpBufferTime);
+            _jumpBufferTimer.OnTimerStop += () => _bufferJump = false;
             input.Jump += HandleJump;
             input.JumpReleased += ReleaseJump;
         }
@@ -38,6 +45,8 @@ namespace Player
                 HandleMovement();
             }
             HandleGravity();
+            _jumpBufferTimer?.Tick(Time.fixedDeltaTime);
+            if(_bufferJump) HandleJump();
         }
 
         public void ToggleInput(bool value)
@@ -53,9 +62,16 @@ namespace Player
 
         protected bool CheckGround()
         {
-            Vector2 centerBottom = new Vector2(collider.bounds.center.x, collider.bounds.min.y);
-            bool grounded =Physics2D.OverlapCircle(centerBottom, movementData.GroundCheckRadius, movementData.GroundLayer);
+            Vector2 boxSize = new Vector2(collider.bounds.size.x, collider.bounds.size.y);
+
+            boxSize.y *= 0.05f; 
+
+            Vector2 checkPosition = new Vector2(collider.bounds.center.x, collider.bounds.min.y + boxSize.y * 0.5f);
+
+            bool grounded = Physics2D.OverlapBox(checkPosition, new Vector2(boxSize.x, boxSize.y), 0f, movementData.GroundLayer);
+
             if (grounded) _isJumping = false;
+
             return grounded;
         }
 
@@ -86,6 +102,15 @@ namespace Player
             {
                 rb.linearVelocityY = movementData.JumpPower;
                 _isJumping = true;
+                _bufferJump = false;
+                if(!input.JumpHeld) ReleaseJump();
+                
+            }
+            else
+            {
+                _jumpBufferTimer.Reset();
+                _jumpBufferTimer.Start();
+                _bufferJump = true;
             }
         }
         
