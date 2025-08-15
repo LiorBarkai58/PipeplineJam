@@ -4029,14 +4029,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 826328051537945778, guid: 6b26a2bc600dc4341ae60434a21d62ea, type: 3}
-      propertyPath: targetMaxDistance
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 826328051537945778, guid: 6b26a2bc600dc4341ae60434a21d62ea, type: 3}
-      propertyPath: targetMinDistance
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2722003385588611594, guid: 6b26a2bc600dc4341ae60434a21d62ea, type: 3}
       propertyPath: m_Name
       value: Flying Enemy
