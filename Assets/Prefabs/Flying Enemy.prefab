@@ -47,12 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289bc4c4c0ae24e4a884a6c8f4c608dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detector: {fileID: 6011002115251445285}
   collider: {fileID: 2075253552309087350}
+  detectionRangeOffset: 0.1
+  speed: 0.5
+  scoreGain: 0
+  detector: {fileID: 6011002115251445285}
   targetMinDistance: 0.5
   targetMaxDistance: 1.5
-  speed: 0.5
-  detectionRangeOffset: 0.1
 --- !u!61 &2075253552309087350
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -257,7 +258,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 134e186e9863be949886ea2b22bc8c2d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
