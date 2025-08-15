@@ -1,4 +1,4 @@
-using System;
+    using System;
 using Input;
 using UnityEngine;
 
@@ -7,31 +7,31 @@ namespace Player
     [RequireComponent(typeof(Rigidbody2D))]
     public class CharacterMovement : MonoBehaviour
     {
-        [Header("Data")] [SerializeField] private MovementData movementData;
+        [Header("Data")] [SerializeField] protected MovementData movementData;
         [Header("Prefab references")]
-        [SerializeField] private Rigidbody2D rb;
+        [SerializeField] protected Rigidbody2D rb;
 
-        [SerializeField] private Collider2D collider;
+        [SerializeField] protected Collider2D collider;
 
-        [SerializeField] private Animator animator;
+        [SerializeField] protected Animator animator;
 
-        [SerializeField] private SpriteRenderer sprite;
+        [SerializeField] protected SpriteRenderer sprite;
 
         [Header("Project References")] [SerializeField]
-        private InputReader input;
+        protected InputReader input;
 
         private static readonly int XVelocity = Animator.StringToHash("xVelocity");
 
         private bool _isJumping = false;
 
         private bool _inputEnabled = true;
-        private void Start()
+        protected virtual void Start()
         {
             input.Jump += HandleJump;
             input.JumpReleased += ReleaseJump;
         }
 
-        private void FixedUpdate()
+        protected virtual void FixedUpdate()
         {
             if (_inputEnabled)
             {
@@ -40,10 +40,18 @@ namespace Player
             HandleGravity();
         }
 
-        public void ToggleInput(bool value) => _inputEnabled = value;
-        
+        public void ToggleInput(bool value)
+        {
+            
+            _inputEnabled = value;
+            if (!value)
+            {
+                rb.linearVelocityX = 0;
+            }
+        }
 
-        private bool CheckGround()
+
+        protected bool CheckGround()
         {
             Vector2 centerBottom = new Vector2(collider.bounds.center.x, collider.bounds.min.y);
             bool grounded =Physics2D.OverlapCircle(centerBottom, movementData.GroundCheckRadius, movementData.GroundLayer);
@@ -55,11 +63,11 @@ namespace Player
         {
             rb.linearVelocityX = input.Direction.x * movementData.Speed;
             animator.SetFloat(XVelocity, Mathf.Abs(rb.linearVelocityX) > 0 ? 1 : -1);
-            if (rb.linearVelocityX > 0) sprite.flipX = true;
-            else if (rb.linearVelocityX < 0) sprite.flipX = false;
+            if (rb.linearVelocityX > 0) transform.localScale = new Vector3(-1, 1, 1);
+            else if (rb.linearVelocityX < 0) transform.localScale = new Vector3(1, 1, 1);
         }
 
-        private void HandleGravity()
+        protected virtual void HandleGravity()
         {
             if (rb.linearVelocityY < 0) // Falling
             {

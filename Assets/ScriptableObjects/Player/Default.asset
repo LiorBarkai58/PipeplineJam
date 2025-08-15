@@ -17,7 +17,7 @@ MonoBehaviour:
   minJumpVelocity: 2
   normalGravityMultiplier: 1
   fallingGravityMultiplier: 2
-  groundCheckRadius: 0.1
+  groundCheckRadius: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
