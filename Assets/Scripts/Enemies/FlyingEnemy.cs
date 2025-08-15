@@ -10,11 +10,13 @@ public class FlyingEnemy : Enemy
 
     //References
     [SerializeField] private EnemyDetection detector;
-
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     //Vars
     [SerializeField] private float targetMinDistance;
     [SerializeField] private float targetMaxDistance;
+    
+    
     
     
     private void Awake()
@@ -24,11 +26,12 @@ public class FlyingEnemy : Enemy
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (this.transform.position != target)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+            Vector3 nextPos = Vector3.MoveTowards(transform.position, target, speed * Time.fixedDeltaTime);
+            rb.MovePosition(nextPos);
         }
         else
         {
