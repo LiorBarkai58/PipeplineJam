@@ -40,8 +40,16 @@ namespace Player
             HandleGravity();
         }
 
-        public void ToggleInput(bool value) => _inputEnabled = value;
-        
+        public void ToggleInput(bool value)
+        {
+            
+            _inputEnabled = value;
+            if (!value)
+            {
+                rb.linearVelocityX = 0;
+            }
+        }
+
 
         private bool CheckGround()
         {
@@ -55,8 +63,8 @@ namespace Player
         {
             rb.linearVelocityX = input.Direction.x * movementData.Speed;
             animator.SetFloat(XVelocity, Mathf.Abs(rb.linearVelocityX) > 0 ? 1 : -1);
-            if (rb.linearVelocityX > 0) sprite.flipX = true;
-            else if (rb.linearVelocityX < 0) sprite.flipX = false;
+            if (rb.linearVelocityX > 0) transform.localScale = new Vector3(-1, 1, 1);
+            else if (rb.linearVelocityX < 0) transform.localScale = new Vector3(1, 1, 1);
         }
 
         private void HandleGravity()

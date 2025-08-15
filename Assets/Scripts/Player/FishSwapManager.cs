@@ -6,30 +6,34 @@ namespace Player
 {
     public class FishSwapManager : MonoBehaviour
     {
-        [SerializeField] private CharacterMovement breakingFish;
+        [SerializeField] private FishManager breakingFish;
 
-        [SerializeField] private CharacterMovement attackingFish;
+        [SerializeField] private FishManager attackingFish;
+
 
         [SerializeField] private CinemachineCamera camera;
 
+        
         private void OnEnable()
         {
-            breakingFish.ToggleInput(true);
-            attackingFish.ToggleInput(false);
+            breakingFish.ToggleControls(true);
+            attackingFish.ToggleControls(false);
             FocusCamera(breakingFish.transform);
+            
+            breakingFish.OnEndPointReached += OnBreakingCompleted;
         }
 
         [ContextMenu("Check fish swapping")]
         public void OnBreakingCompleted()
         {
-            breakingFish.ToggleInput(false);
-            attackingFish.ToggleInput(true);
+            breakingFish.ToggleControls(false);
+            attackingFish.ToggleControls(true);
             FocusCamera(attackingFish.transform);
         }
         private void OnAttackingCompleted()
         {
-            breakingFish.ToggleInput(true);
-            attackingFish.ToggleInput(false);
+            breakingFish.ToggleControls(true);
+            attackingFish.ToggleControls(false);
         }
 
         private void FocusCamera(Transform target)
