@@ -23,6 +23,8 @@ namespace Player
         private static readonly int XVelocity = Animator.StringToHash("xVelocity");
 
         private bool _isJumping = false;
+
+        private bool _inputEnabled = true;
         private void Start()
         {
             input.Jump += HandleJump;
@@ -31,14 +33,15 @@ namespace Player
 
         private void FixedUpdate()
         {
-            // Vector3 newPosition = transform.position + input.Direction * (speed * Time.fixedDeltaTime);
-            // rb.MovePosition(newPosition);
-            rb.linearVelocityX = input.Direction.x * movementData.Speed;
-            animator.SetFloat(XVelocity, Mathf.Abs(rb.linearVelocityX) > 0 ? 1 : -1);
-            if (rb.linearVelocityX > 0) sprite.flipX = true;
-            else if (rb.linearVelocityX < 0) sprite.flipX = false;
+            if (_inputEnabled)
+            {
+                HandleMovement();
+            }
             HandleGravity();
         }
+
+        public void ToggleInput(bool value) => _inputEnabled = value;
+        
 
         private bool CheckGround()
         {
@@ -46,6 +49,14 @@ namespace Player
             bool grounded =Physics2D.OverlapCircle(centerBottom, movementData.GroundCheckRadius, movementData.GroundLayer);
             if (grounded) _isJumping = false;
             return grounded;
+        }
+
+        private void HandleMovement()
+        {
+            rb.linearVelocityX = input.Direction.x * movementData.Speed;
+            animator.SetFloat(XVelocity, Mathf.Abs(rb.linearVelocityX) > 0 ? 1 : -1);
+            if (rb.linearVelocityX > 0) sprite.flipX = true;
+            else if (rb.linearVelocityX < 0) sprite.flipX = false;
         }
 
         private void HandleGravity()
@@ -62,6 +73,7 @@ namespace Player
 
         private void HandleJump()
         {
+            if (!_inputEnabled) return;
             if (CheckGround() && rb.linearVelocityY == 0)
             {
                 rb.linearVelocityY = movementData.JumpPower;
