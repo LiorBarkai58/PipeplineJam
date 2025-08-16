@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     {
         currentLevel = levelManager.GenerateLevel(0);
         fishSwapManager.OnEndLevelEvent += OnEndLevel;
-        fishHealthManager.OnDeathEvent += PlayerDeath;
+        fishHealthManager.OnDeathEvent += PlayerDeath;                               
         uiManager.UpdateLevel(1);
 
         enemyList = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDeath()
     {
-        uiManager.UpdateHealthHeal(fishHealthManager.MaxHealth);
+        // uiManager.UpdateHealthHeal(fishHealthManager.MaxHealth);
     }
 
     public void OnEndLevel()

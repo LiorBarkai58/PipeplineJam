@@ -24,7 +24,6 @@ namespace Player
         private void HandleTakeDamage()
         {
             currentHealth--;
-            //screenshake
             if (currentHealth <= 0)
             {
                 OnDeathEvent?.Invoke();
