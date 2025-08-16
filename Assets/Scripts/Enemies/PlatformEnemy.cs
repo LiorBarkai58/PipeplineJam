@@ -34,6 +34,7 @@ public class PlatformEnemy : Enemy
     // Update is called once per frame
     void Update()
     {
+        if(!platform) Destroy(gameObject);
         if (transform.position != target)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
