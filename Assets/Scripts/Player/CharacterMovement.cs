@@ -1,5 +1,6 @@
     using System;
-using Input;
+    using DefaultNamespace.Audio;
+    using Input;
 using UnityEngine;
 using Utilities;
 
@@ -18,6 +19,7 @@ namespace Player
 
         [SerializeField] protected SpriteRenderer sprite;
 
+        [SerializeField] private AudioClip jumpSound;
         [Header("Project References")] [SerializeField]
         protected InputReader input;
 
@@ -100,6 +102,7 @@ namespace Player
             if (!_inputEnabled) return;
             if (CheckGround() && rb.linearVelocityY == 0)
             {
+                SfxManager.Instance?.PlaySFX(jumpSound, 0.7f);
                 rb.linearVelocityY = movementData.JumpPower;
                 _isJumping = true;
                 _bufferJump = false;

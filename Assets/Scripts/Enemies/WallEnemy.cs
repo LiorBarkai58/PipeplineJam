@@ -48,7 +48,7 @@ public class WallEnemy : Enemy
         _isAttacking = true;
     }
 
-    private void FinishAttack()
+    public void FinishAttack()
     {
         _isAttacking = false;
     }

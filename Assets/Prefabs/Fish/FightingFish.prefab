@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 97d85db7f051d844489a4333fc17393c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitbox: {fileID: 4160119821056363151}
+  hitSound: {fileID: 8300000, guid: a1ba8f8a634be3640ad2e142981707c7, type: 3}
 --- !u!61 &4160119821056363151
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -463,8 +464,10 @@ MonoBehaviour:
   collider: {fileID: 5027026214709861611}
   animator: {fileID: 7824204612213777727}
   sprite: {fileID: 1109197332870037331}
+  jumpSound: {fileID: 8300000, guid: af02569554c0ade47be28943904860a3, type: 3}
   input: {fileID: 11400000, guid: f92884d5707d11142ac266d2203b7ce0, type: 2}
   armsHitbox: {fileID: 1410828205155952803}
+  effectAnimator: {fileID: 7824204612213777727}
   hitCooldown: 0.2
 --- !u!50 &3635068328290549017
 Rigidbody2D:

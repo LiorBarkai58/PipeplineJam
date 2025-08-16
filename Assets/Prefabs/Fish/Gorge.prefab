@@ -259,6 +259,7 @@ MonoBehaviour:
   collider: {fileID: 5027026214709861611}
   animator: {fileID: 7824204612213777727}
   sprite: {fileID: 1109197332870037331}
+  jumpSound: {fileID: 8300000, guid: af02569554c0ade47be28943904860a3, type: 3}
   input: {fileID: 11400000, guid: f92884d5707d11142ac266d2203b7ce0, type: 2}
 --- !u!50 &3635068328290549017
 Rigidbody2D:
