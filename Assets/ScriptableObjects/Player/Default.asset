@@ -16,7 +16,7 @@ MonoBehaviour:
   jumpPower: 6
   minJumpVelocity: 3
   normalGravityMultiplier: 1
-  fallingGravityMultiplier: 2
+  fallingGravityMultiplier: 3
   groundCheckRadius: 0.1
   groundLayer:
     serializedVersion: 2

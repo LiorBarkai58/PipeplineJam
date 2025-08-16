@@ -5,6 +5,8 @@ namespace Player.FishWithArms
 {
     public class FishWithArmsController : CharacterMovement
     {
+        private static readonly int Smash = Animator.StringToHash("Smash");
+
         [Header("Arms Specific")]
         [SerializeField] private ArmsHitbox armsHitbox;
 
@@ -27,8 +29,11 @@ namespace Player.FishWithArms
 
         private IEnumerator HitDuration()
         {
+            animator.SetTrigger(Smash);
+            
             _canAttack = false;
             rb.linearVelocityY = 3;
+            yield return new WaitForSeconds(0.3f);
             armsHitbox.gameObject.SetActive(true);
             yield return new WaitForSeconds(0.1f);
             armsHitbox.gameObject.SetActive(false);

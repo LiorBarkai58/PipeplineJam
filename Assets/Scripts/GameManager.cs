@@ -1,20 +1,34 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Player;
 using Unity.Cinemachine;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     //References
+    [SerializeField] private FishSwapManager fishSwapManager;
+    [SerializeField] private LevelManager levelManager;
+    [SerializeField] private UIManager uiManager;
     [SerializeField] private List<Enemy> enemyList;
 
     [SerializeField] private CinemachineImpulseSource screenShakeSource;
+    [SerializeField] private FishHealthManager fishHealthManager;
     //Vars
     private int score;
+    private int level = 1;
+    private List<GameObject> currentLevel;
 
     private void Awake()
     {
+        currentLevel = levelManager.GenerateLevel(0);
+        fishSwapManager.OnEndLevelEvent += OnEndLevel;
+        fishHealthManager.OnDeathEvent += PlayerDeath;                               
+        uiManager.UpdateLevel(1);
+
+        enemyList = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
+        
         foreach (var enemy in enemyList)
         {
             enemy.OnEnemyDeathEvent += AddScore;
@@ -22,26 +36,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AddScore(int score)
     {
         this.score += score;
+        uiManager.UpdateScore(this.score);
     }
 
     public void PlayerHit()
     {
-        screenShakeSource.GenerateImpulseWithForce(1);
+        screenShakeSource.GenerateImpulseWithForce(0.5f);
+        uiManager.UpdateHealth(fishHealthManager.TakeDamage());
+    }
+
+    public void PlayerDeath()
+    {
+        // uiManager.UpdateHealthHeal(fishHealthManager.MaxHealth);
+    }
+
+    public void OnEndLevel()
+    {
+        levelManager.DestroyLevel(currentLevel);
+        level++;
+        levelManager.GenerateLevel(level - 1);
+        
+        enemyList = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
+
+        uiManager.UpdateLevel(level);
+        uiManager.UpdateHealth(fishHealthManager.MaxHealth);
     }
     
     #if UNITY_EDITOR
