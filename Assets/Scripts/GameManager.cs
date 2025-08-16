@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     {
         currentLevel = levelManager.GenerateLevel(0);
         fishSwapManager.OnEndLevelEvent += OnEndLevel;
+        fishHealthManager.OnDeathEvent += fishSwapManager.SwapFish;
+        fishHealthManager.OnDeathEvent += fishHealthManager.ResetHp;
+        fishHealthManager.OnDeathEvent += PlayerDeath;
         uiManager.UpdateLevel(1);
 
         enemyList = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
@@ -45,6 +48,11 @@ public class GameManager : MonoBehaviour
     {
         screenShakeSource.GenerateImpulseWithForce(0.5f);
         uiManager.UpdateHealth(fishHealthManager.TakeDamage());
+    }
+
+    public void PlayerDeath()
+    {
+        uiManager.UpdateHealthHeal(fishHealthManager.MaxHealth);
     }
 
     public void OnEndLevel()

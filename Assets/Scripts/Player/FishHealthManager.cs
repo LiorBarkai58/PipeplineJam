@@ -35,5 +35,10 @@ namespace Player
             HandleTakeDamage();
             return currentHealth;
         }
+
+        public void ResetHp()
+        {
+            currentHealth = maxHealth;
+        }
     }
 }

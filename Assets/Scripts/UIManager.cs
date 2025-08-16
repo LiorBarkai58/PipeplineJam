@@ -28,13 +28,14 @@ public class UIManager : MonoBehaviour
     {
         if (health < hearts.Count && health >= 0)
             hearts[health].SetActive(false);
-        else if (health < hearts.Count)
+    }
+
+    public void UpdateHealthHeal(int health)
+    {
+        for (int i = 0; i < health; i++)
         {
-            for (int i = 0; i < health - 1; i++)
-            {
-                if (!hearts[i].activeSelf)
-                    hearts[health - 1].SetActive(true);
-            }
+            if (!hearts[i].activeSelf)
+                hearts[health].SetActive(true);
         }
     }
 
