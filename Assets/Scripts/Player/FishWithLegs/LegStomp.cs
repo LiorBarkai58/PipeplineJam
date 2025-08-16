@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace.Audio;
 using UnityEngine;
 using UnityEngine.Events;
 using Utilities;
@@ -12,6 +13,8 @@ namespace Player.FishWithLegs
         [SerializeField] private float minAirTime = 0.2f;
         
         private StopwatchTimer _airTimer = new StopwatchTimer();
+
+        [SerializeField] private AudioClip destroySound;
 
         public bool CanBreak = false;
         private void OnEnable()
@@ -36,6 +39,7 @@ namespace Player.FishWithLegs
             Debug.Log($"Passed: {_airTimer.TimePassed}");
             if (!other.CompareTag(Tags.BreakableWall) || !CanBreak) return;
             Destroy(other.gameObject);
+            SfxManager.Instance?.PlaySFX(destroySound, 0.5f);
             OnStomp?.Invoke();
         }
     }

@@ -52,7 +52,7 @@ MonoBehaviour:
   collider: {fileID: 2075253552309087350}
   combat: {fileID: 4961428103783440595}
   detectionRangeOffset: 0.1
-  speed: 2
+  speed: 1
   scoreGain: 50
   detector: {fileID: 6011002115251445285}
   rb: {fileID: 6219423643117241593}
@@ -93,7 +93,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.000054478645, y: -0.0020203516}
+  m_Offset: {x: 0.052628994, y: 0.038955748}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -103,7 +103,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.16214442, y: 0.16389231}
+  m_Size: {x: 2.4685097, y: 2.423428}
   m_EdgeRadius: 0
 --- !u!50 &6219423643117241593
 Rigidbody2D:
@@ -242,8 +242,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3717317068037202896}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -341,12 +341,20 @@ PrefabInstance:
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3470949196244280801, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
+      propertyPath: m_Size.x
+      value: 1.7668681
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470949196244280801, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
       propertyPath: m_Size.y
-      value: 1.0525812
+      value: 1.9259586
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470949196244280801, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.021301985
       objectReference: {fileID: 0}
     - target: {fileID: 3470949196244280801, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
       propertyPath: m_Offset.y
-      value: 0.08999188
+      value: 0.1006428
       objectReference: {fileID: 0}
     - target: {fileID: 3718947431720961326, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
       propertyPath: m_LocalPosition.x

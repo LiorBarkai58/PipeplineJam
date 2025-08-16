@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minAirTime: 0.05
+  destroySound: {fileID: 8300000, guid: 0cbdb14153048c8479a059a510d0b9aa, type: 3}
   CanBreak: 0
 --- !u!61 &4160119821056363151
 BoxCollider2D:
@@ -353,8 +354,10 @@ MonoBehaviour:
   collider: {fileID: 5027026214709861611}
   animator: {fileID: 7824204612213777727}
   sprite: {fileID: 1109197332870037331}
+  jumpSound: {fileID: 8300000, guid: af02569554c0ade47be28943904860a3, type: 3}
   input: {fileID: 11400000, guid: f92884d5707d11142ac266d2203b7ce0, type: 2}
   legStompHandler: {fileID: 2263434059464541536}
+  hopSound: {fileID: 8300000, guid: 5e118f8a49bb71f44b9c6b5f04a07511, type: 3}
   stompingGravityMultiplier: 7
   stompingBounceStrength: 5
   initialStompJumpStrength: 5

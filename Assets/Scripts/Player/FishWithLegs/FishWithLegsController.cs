@@ -1,3 +1,4 @@
+using DefaultNamespace.Audio;
 using UnityEngine;
 using Utilities;
 
@@ -11,6 +12,7 @@ namespace Player.FishWithLegs
         [Header("Stomping references")]
         [SerializeField] private LegStomp legStompHandler;
 
+        [SerializeField] private AudioClip hopSound;
         [Header("Stomping data")] [SerializeField]
         private float stompingGravityMultiplier = 7;
 
@@ -41,6 +43,7 @@ namespace Player.FishWithLegs
             rb.linearVelocity = new Vector2(0, initialStompJumpStrength);
             legStompHandler.CanBreak = rb.linearVelocityY < 0;
             _isStomping = true;
+            SfxManager.Instance?.PlaySFX(hopSound, 0.7f);
             animator.SetBool(IsStomping, _isStomping);
             legStompHandler.gameObject.SetActive(true);
             Debug.Log("Start stomp");
