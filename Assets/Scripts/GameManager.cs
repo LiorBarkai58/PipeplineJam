@@ -1,22 +1,27 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Player;
 using Unity.Cinemachine;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     //References
+    [SerializeField] private FishSwapManager fishSwapManager;
+    [SerializeField] private LevelManager levelManager;
     [SerializeField] private List<Enemy> enemyList;
 
     [SerializeField] private CinemachineImpulseSource screenShakeSource;
     //Vars
     private int score;
+    private int level;
 
     private void Awake()
     {
         foreach (var enemy in enemyList)
         {
+            fishSwapManager.OnEndLevelEvent += OnEndLevel;
             enemy.OnEnemyDeathEvent += AddScore;
             enemy.OnHitPlayerEvent += PlayerHit; //Need to write this function.
         }
@@ -42,6 +47,12 @@ public class GameManager : MonoBehaviour
     public void PlayerHit()
     {
         screenShakeSource.GenerateImpulseWithForce(1);
+    }
+
+    public void OnEndLevel()
+    {
+        level++;
+        levelManager
     }
     
     #if UNITY_EDITOR

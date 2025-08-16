@@ -15,10 +15,10 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        GenerateLevel();
+        GenerateLevel(0);
     }
 
-    private void GenerateLevel()
+    public void GenerateLevel(int level)
     {
         for (int i = 0; i < levelSegmentPrefabs.Count; i++)
         {
@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
         Instantiate(endLevelSegmentPrefab, new Vector3(transform.position.x, transform.position.y + (-gap * bgCount* levelSegmentPrefabs.Count), 0), transform.rotation);
     }
 
-    private void GenerateLevelRandom()
+    public void GenerateLevelRandom()
     {
         List<GameObject> copy = new List<GameObject>(levelSegmentPrefabs);
         for (int i = 0; i < levelSegmentPrefabs.Count; i++)
