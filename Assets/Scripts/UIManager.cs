@@ -12,10 +12,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup levelTitle;
     [SerializeField] private List<GameObject> hearts;
 
+    private bool updatedLevel = false;
     public void UpdateLevel(int level)
     {
         {
             levelText.text = level.ToString();
+            updatedLevel = false;
         }
     }
 
@@ -41,8 +43,12 @@ public class UIManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == Tags.Player)
+        if (other.CompareTag(Tags.Player) && !updatedLevel)
+        {
             FadeInAndOut(1.5f,4);
+            updatedLevel = true;
+
+        }
     }
 
     public void FadeInAndOut(float fadeDuration, float waitTime)
