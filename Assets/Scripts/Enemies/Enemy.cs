@@ -35,6 +35,7 @@ public abstract class Enemy: MonoBehaviour
     private void HandlePlayerHit(Collider2D other)
     {
         OnHitPlayerEvent?.Invoke();
+        
     }
 
     private void OnDestroy()

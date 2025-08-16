@@ -12,6 +12,7 @@ namespace Enemies
             if (other.CompareTag(Tags.Player))
             {
                 OnHitPlayerEvent?.Invoke(other);
+                
             }
         }
     }

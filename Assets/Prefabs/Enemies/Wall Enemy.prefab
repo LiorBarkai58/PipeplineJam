@@ -123,7 +123,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6910300031144229060}
   - {fileID: 7798394860109482505}
   - {fileID: 7005704074528585804}
   m_Father: {fileID: 0}
@@ -146,6 +145,7 @@ MonoBehaviour:
   speed: 0.5
   scoreGain: 10
   detector: {fileID: 6568773355817333153}
+  animator: {fileID: 0}
   distance: 10
 --- !u!61 &6520553209311591701
 BoxCollider2D:
@@ -203,6 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7798394860109482505}
   - component: {fileID: 7368990031097383960}
+  - component: {fileID: 1805474251887326646}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -219,10 +220,11 @@ Transform:
   m_GameObject: {fileID: 5985636488760994904}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7036373, w: 0.7105593}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalPosition: {x: 0.34, y: 0.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6910300031144229060}
   m_Father: {fileID: 8536638862252034451}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.439}
 --- !u!212 &7368990031097383960
@@ -269,7 +271,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 58dfb5da2d9782147b1c555b199f2dee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f7087e79f0d6d2408e8ae0b02d1e6df, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -280,6 +282,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1805474251887326646
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5985636488760994904}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1cef4edeeb171444d841cef7b1e60ec1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &7816572988855991786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -291,6 +315,14 @@ PrefabInstance:
     - target: {fileID: 1105364797585026900, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
       propertyPath: m_Name
       value: Combat
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470949196244280801, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
+      propertyPath: m_Size.y
+      value: 1.3854032
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470949196244280801, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.13415933
       objectReference: {fileID: 0}
     - target: {fileID: 3718947431720961326, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
       propertyPath: m_LocalPosition.x

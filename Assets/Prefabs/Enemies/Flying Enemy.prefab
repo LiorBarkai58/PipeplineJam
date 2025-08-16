@@ -52,7 +52,7 @@ MonoBehaviour:
   collider: {fileID: 2075253552309087350}
   combat: {fileID: 4961428103783440595}
   detectionRangeOffset: 0.1
-  speed: 5
+  speed: 2
   scoreGain: 50
   detector: {fileID: 6011002115251445285}
   rb: {fileID: 6219423643117241593}

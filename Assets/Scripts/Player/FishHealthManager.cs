@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,9 +9,13 @@ namespace Player
 {
     public class FishHealthManager : MonoBehaviour
     {
+        [SerializeField] private CinemachineImpulseSource screenShakeSource;
+        
         public int MaxHealth {
             get { return maxHealth; }
         }
+
+        private bool _iFrame = false;
 
         [SerializeField] private int maxHealth = 2;
 
@@ -23,7 +29,11 @@ namespace Player
 
         private void HandleTakeDamage()
         {
+            if (_iFrame) return;
             currentHealth--;
+            StartCoroutine(IFrame());
+            screenShakeSource.GenerateImpulseWithForce(0.5f);
+            
             if (currentHealth <= 0)
             {
                 OnDeathEvent?.Invoke();
@@ -38,6 +48,13 @@ namespace Player
         public void ResetHp()
         {
             currentHealth = maxHealth;
+        }
+
+        private IEnumerator IFrame()
+        {
+            _iFrame = true;
+            yield return new WaitForSeconds(1f);
+            _iFrame = false;
         }
     }
 }
