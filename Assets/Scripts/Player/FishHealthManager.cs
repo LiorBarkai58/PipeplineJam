@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Player
 {
@@ -9,6 +10,8 @@ namespace Player
         [SerializeField] private int maxHealth = 3;
 
         private int currentHealth;
+        
+        public event UnityAction OnDeathEvent;
         private void Start()
         {
             currentHealth = maxHealth;
@@ -20,7 +23,7 @@ namespace Player
             //screenshake
             if (currentHealth <= 0)
             {
-                //handle death
+                OnDeathEvent?.Invoke();
             }
         }
         public void TakeDamage()
