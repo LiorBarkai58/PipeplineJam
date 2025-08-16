@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Player;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Enemy> enemyList;
 
     [SerializeField] private CinemachineImpulseSource screenShakeSource;
+    [SerializeField] private FishHealthManager fishHealthManager;
     //Vars
     private int score;
 
@@ -41,7 +43,8 @@ public class GameManager : MonoBehaviour
 
     public void PlayerHit()
     {
-        screenShakeSource.GenerateImpulseWithForce(1);
+        screenShakeSource.GenerateImpulseWithForce(0.5f);
+        fishHealthManager.TakeDamage();
     }
     
     #if UNITY_EDITOR

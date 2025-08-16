@@ -6,19 +6,12 @@ namespace Player
 {
     public class FishHealthManager : MonoBehaviour
     {
-        [SerializeField] private List<FishManager> fishManagers;
-
-
         [SerializeField] private int maxHealth = 3;
 
         private int currentHealth;
         private void Start()
         {
             currentHealth = maxHealth;
-            foreach (FishManager fish in fishManagers)
-            {
-                fish.OnTakeDamage += HandleTakeDamage;
-            }
         }
 
         private void HandleTakeDamage()
@@ -29,6 +22,10 @@ namespace Player
             {
                 //handle death
             }
+        }
+        public void TakeDamage()
+        {
+            HandleTakeDamage();
         }
     }
 }
