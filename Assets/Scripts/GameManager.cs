@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIManager uiManager;
     [SerializeField] private List<Enemy> enemyList;
 
-    [SerializeField] private CinemachineImpulseSource screenShakeSource;
     [SerializeField] private FishHealthManager fishHealthManager;
     //Vars
     private int score;
@@ -44,7 +43,6 @@ public class GameManager : MonoBehaviour
 
     public void PlayerHit()
     {
-        screenShakeSource.GenerateImpulseWithForce(0.5f);
         uiManager.UpdateHealth(fishHealthManager.TakeDamage());
     }
 

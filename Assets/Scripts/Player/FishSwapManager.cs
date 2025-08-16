@@ -13,6 +13,8 @@ namespace Player
         [SerializeField] private FishManager breakingFish;
 
         [SerializeField] private FishManager attackingFish;
+
+        [SerializeField] private FishManager presidentFish;
         
         [SerializeField] private Transform spawnPoint;
 
@@ -26,9 +28,12 @@ namespace Player
         {
             breakingFish.ToggleControls(true);
             attackingFish.ToggleControls(false);
+            presidentFish.ToggleControls(false);
             FocusCamera(breakingFish.transform);
             
             breakingFish.OnEndPointReached += OnBreakingCompleted;
+            attackingFish.OnEndPointReached += OnAttackingCompleted;
+            presidentFish.OnEndPointReached += OnEndLevel;
             currentFish = breakingFish;
         }
 
@@ -40,33 +45,34 @@ namespace Player
                 OnAttackingCompleted();
         }
 
-        [ContextMenu("Check fish swapping")]
         public void OnBreakingCompleted()
         {
             breakingFish.ToggleControls(false);
             attackingFish.ToggleControls(true);
             FocusCamera(attackingFish.transform);
             
-            attackingFish.OnEndPointReached += OnEndLevel; //Will this be called more than once since we add this listener more than once?
+            
             currentFish = attackingFish;
         }
         private void OnAttackingCompleted()
         {
-            breakingFish.ToggleControls(true);
             attackingFish.ToggleControls(false);
-            FocusCamera(breakingFish.transform);
+            presidentFish.ToggleControls(true);
+            FocusCamera(presidentFish.transform);
             
-            currentFish = breakingFish;
+            currentFish = presidentFish;
         }
 
         private void OnEndLevel()
         {
             breakingFish.ToggleControls(true);
             attackingFish.ToggleControls(false);
+            presidentFish.ToggleControls(false);
             FocusCamera(breakingFish.transform);
             
             breakingFish.transform.position = spawnPoint.position;
             attackingFish.transform.position = spawnPoint.position;
+            presidentFish.transform.position = spawnPoint.position;
             
             OnEndLevelEvent?.Invoke();
         }

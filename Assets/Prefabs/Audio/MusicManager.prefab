@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 6239609751867983055}
   musicTracks:
-  - {fileID: 8300000, guid: 080337c9a12c97b4ba0fa2b82cc0463a, type: 3}
+  - {fileID: 8300000, guid: fb237afc3fc36a6418d65613685981f5, type: 3}
   fadeDuration: 1.5
 --- !u!1001 &2755847673232530340
 PrefabInstance:
