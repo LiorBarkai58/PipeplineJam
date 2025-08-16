@@ -18,6 +18,8 @@ namespace Player
 
 
         [SerializeField] private CinemachineCamera camera;
+        
+        private FishManager currentFish;
 
         
         private void OnEnable()
@@ -27,6 +29,15 @@ namespace Player
             FocusCamera(breakingFish.transform);
             
             breakingFish.OnEndPointReached += OnBreakingCompleted;
+            currentFish = breakingFish;
+        }
+
+        public void SwapFish()
+        {
+            if (currentFish == breakingFish)
+                OnBreakingCompleted();
+            else if (currentFish == attackingFish)
+                OnAttackingCompleted();
         }
 
         [ContextMenu("Check fish swapping")]
@@ -36,13 +47,16 @@ namespace Player
             attackingFish.ToggleControls(true);
             FocusCamera(attackingFish.transform);
             
-            attackingFish.OnEndPointReached += OnEndLevel;
+            attackingFish.OnEndPointReached += OnEndLevel; //Will this be called more than once since we add this listener more than once?
+            currentFish = attackingFish;
         }
         private void OnAttackingCompleted()
         {
             breakingFish.ToggleControls(true);
             attackingFish.ToggleControls(false);
             FocusCamera(breakingFish.transform);
+            
+            currentFish = breakingFish;
         }
 
         private void OnEndLevel()

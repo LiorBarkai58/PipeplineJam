@@ -7,7 +7,11 @@ namespace Player
 {
     public class FishHealthManager : MonoBehaviour
     {
-        [SerializeField] private int maxHealth = 3;
+        public int MaxHealth {
+            get { return maxHealth; }
+        }
+
+        [SerializeField] private int maxHealth = 2;
 
         private int currentHealth;
         
@@ -26,9 +30,15 @@ namespace Player
                 OnDeathEvent?.Invoke();
             }
         }
-        public void TakeDamage()
+        public int TakeDamage()
         {
             HandleTakeDamage();
+            return currentHealth;
+        }
+
+        public void ResetHp()
+        {
+            currentHealth = maxHealth;
         }
     }
 }

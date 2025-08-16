@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     //References
     [SerializeField] private FishSwapManager fishSwapManager;
     [SerializeField] private LevelManager levelManager;
+    [SerializeField] private UIManager uiManager;
     [SerializeField] private List<Enemy> enemyList;
 
     [SerializeField] private CinemachineImpulseSource screenShakeSource;
@@ -23,6 +24,13 @@ public class GameManager : MonoBehaviour
     {
         currentLevel = levelManager.GenerateLevel(0);
         fishSwapManager.OnEndLevelEvent += OnEndLevel;
+        fishHealthManager.OnDeathEvent += fishSwapManager.SwapFish;
+        fishHealthManager.OnDeathEvent += fishHealthManager.ResetHp;
+        fishHealthManager.OnDeathEvent += PlayerDeath;
+        uiManager.UpdateLevel(1);
+
+        enemyList = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
+        
         foreach (var enemy in enemyList)
         {
             enemy.OnEnemyDeathEvent += AddScore;
@@ -33,12 +41,18 @@ public class GameManager : MonoBehaviour
     public void AddScore(int score)
     {
         this.score += score;
+        uiManager.UpdateScore(this.score);
     }
 
     public void PlayerHit()
     {
         screenShakeSource.GenerateImpulseWithForce(0.5f);
-        fishHealthManager.TakeDamage();
+        uiManager.UpdateHealth(fishHealthManager.TakeDamage());
+    }
+
+    public void PlayerDeath()
+    {
+        uiManager.UpdateHealthHeal(fishHealthManager.MaxHealth);
     }
 
     public void OnEndLevel()
@@ -46,6 +60,11 @@ public class GameManager : MonoBehaviour
         levelManager.DestroyLevel(currentLevel);
         level++;
         levelManager.GenerateLevel(level - 1);
+        
+        enemyList = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
+
+        uiManager.UpdateLevel(level);
+        uiManager.UpdateHealth(fishHealthManager.MaxHealth);
     }
     
     #if UNITY_EDITOR
