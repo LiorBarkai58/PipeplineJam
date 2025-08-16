@@ -16,6 +16,9 @@ public class FlyingEnemy : Enemy
     [SerializeField] private float targetMinDistance;
     [SerializeField] private float targetMaxDistance;
     
+    private bool inRange;
+    private Transform playerRef;
+    
     
     
     
@@ -30,6 +33,8 @@ public class FlyingEnemy : Enemy
     {
         if (transform.position != target)
         {
+            if (inRange)
+                target = playerRef.position;
             Vector3 nextPos = Vector3.MoveTowards(transform.position, target, speed * Time.fixedDeltaTime);
             rb.MovePosition(nextPos);
         }
@@ -42,13 +47,16 @@ public class FlyingEnemy : Enemy
     private void TargetPlayer(Collider2D player)
     {
         animator.SetBool(Chasing, true);
-        target = player.transform.position;
+        inRange = true;
+        playerRef = player.transform;
+        target = playerRef.position;
         Debug.Log("Targets Player");
     }
 
     private void FindTarget(Collider2D radius)
     {
         animator.SetBool(Chasing, false);
+        inRange = false;
         target = GetTarget();
         Debug.Log("Targets Point");
     }
