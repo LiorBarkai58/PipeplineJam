@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private List<LevelScriptableObject> levels;
     
     //Vars
-    [SerializeField] private float gap = 20.48f;
+    [SerializeField] private float gap = 20.0f;
     [SerializeField] private int bgCount = 2;
     
     public List<GameObject> GenerateLevel(int level)
