@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
     public void OnEndLevel()
     {
         level++;
-        levelManager
     }
     
     #if UNITY_EDITOR
