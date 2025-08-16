@@ -50,7 +50,7 @@ namespace ScenesHelpers
                 await UniTask.Yield();
             }
 
-            await UniTask.Delay(2500);
+            await UniTask.Delay(1000);
             
             operation.allowSceneActivation = true;
 

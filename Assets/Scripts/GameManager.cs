@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Player;
+using ScenesHelpers;
+using ScenesHelpers.Editor;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -14,6 +16,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Enemy> enemyList;
 
     [SerializeField] private FishHealthManager fishHealthManager;
+
+    [SerializeField] private SceneRequestChannel sceneRequestChannel;
+    
+    [SerializeField] private SceneField tyforPlaying;
     //Vars
     private int score;
     private int level = 1;
@@ -35,6 +41,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        fishSwapManager.OnEndLevelEvent -= OnEndLevel;
+        fishHealthManager.OnDeathEvent -= PlayerDeath; 
+    }
+
     public void AddScore(int score)
     {
         this.score += score;
@@ -48,6 +60,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDeath()
     {
+        sceneRequestChannel.RequestSceneChange(tyforPlaying);
         // uiManager.UpdateHealthHeal(fishHealthManager.MaxHealth);
     }
 

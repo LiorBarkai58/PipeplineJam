@@ -40,6 +40,13 @@ namespace Player
             input.JumpReleased += ReleaseJump;
         }
 
+        protected virtual void OnDestroy()
+        {
+            input.Jump -= HandleJump;
+            input.JumpReleased -= ReleaseJump;
+            
+        }
+
         protected virtual void FixedUpdate()
         {
             if (_inputEnabled)

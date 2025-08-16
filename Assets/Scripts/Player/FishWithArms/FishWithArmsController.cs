@@ -20,6 +20,12 @@ namespace Player.FishWithArms
             armsHitbox.gameObject.SetActive(false);
         }
         
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            input.Action -= StartHit;
+        }
+        
         private void StartHit()
         {
             if (_canAttack && _inputEnabled)

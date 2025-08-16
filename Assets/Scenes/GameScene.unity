@@ -258,6 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breakingFish: {fileID: 1317493423}
   attackingFish: {fileID: 1246597150}
+  presidentFish: {fileID: 0}
   spawnPoint: {fileID: 0}
   camera: {fileID: 1135413042}
 --- !u!4 &135448727
@@ -1055,11 +1056,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishSwapManager: {fileID: 0}
   levelManager: {fileID: 0}
+  uiManager: {fileID: 0}
   enemyList:
   - {fileID: 575316087}
   - {fileID: 828901064}
-  screenShakeSource: {fileID: 699800829}
   fishHealthManager: {fileID: 1487896385}
+  sceneRequestChannel: {fileID: 11400000, guid: ff49097b70866d6479242c5822e581fd, type: 2}
+  tyforPlaying:
+    sceneAsset: {fileID: 102900000, guid: fcb7dba3246cc204cacf3cac216ad45c, type: 3}
+    sceneName: ThankForPlaying
 --- !u!4 &699800831
 Transform:
   m_ObjectHideFlags: 0
@@ -3510,6 +3515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a46421a3c4f48b598859fc9347aae32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenShakeSource: {fileID: 0}
+  hurtClip: {fileID: 0}
   maxHealth: 3
 --- !u!4 &1502871727 stripped
 Transform:

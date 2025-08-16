@@ -29,6 +29,12 @@ namespace Player.FishWithLegs
             legStompHandler.gameObject.SetActive(false);
         }
 
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            input.Action -= StartStomp;
+            legStompHandler.OnStomp -= Stomped;
+        }
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
