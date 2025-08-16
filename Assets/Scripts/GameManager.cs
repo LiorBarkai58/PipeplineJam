@@ -16,28 +16,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private FishHealthManager fishHealthManager;
     //Vars
     private int score;
-    private int level;
+    private int level = 1;
+    private List<GameObject> currentLevel;
 
     private void Awake()
     {
+        currentLevel = levelManager.GenerateLevel(0);
+        fishSwapManager.OnEndLevelEvent += OnEndLevel;
         foreach (var enemy in enemyList)
         {
-            fishSwapManager.OnEndLevelEvent += OnEndLevel;
             enemy.OnEnemyDeathEvent += AddScore;
             enemy.OnHitPlayerEvent += PlayerHit; //Need to write this function.
         }
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void AddScore(int score)
@@ -53,7 +43,9 @@ public class GameManager : MonoBehaviour
 
     public void OnEndLevel()
     {
+        levelManager.DestroyLevel(currentLevel);
         level++;
+        levelManager.GenerateLevel(level - 1);
     }
     
     #if UNITY_EDITOR
