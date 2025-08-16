@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
     {
         currentLevel = levelManager.GenerateLevel(0);
         fishSwapManager.OnEndLevelEvent += OnEndLevel;
-        fishHealthManager.OnDeathEvent += fishSwapManager.SwapFish;
-        fishHealthManager.OnDeathEvent += fishHealthManager.ResetHp;
         fishHealthManager.OnDeathEvent += PlayerDeath;
         uiManager.UpdateLevel(1);
 

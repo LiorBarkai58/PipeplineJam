@@ -1878,12 +1878,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc043636464bf494f9496994120533bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelText: {fileID: 35111121}
+  levelText: {fileID: 115167174}
   scoreText: {fileID: 961446060}
   levelTitle: {fileID: 1568166741}
   hearts:
-  - {fileID: 1455773896}
   - {fileID: 535805160}
+  - {fileID: 1455773896}
 --- !u!4 &683995103
 Transform:
   m_ObjectHideFlags: 0

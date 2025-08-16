@@ -200,7 +200,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 8
+  m_Radius: 6
 --- !u!114 &6011002115251445285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +335,10 @@ PrefabInstance:
     - target: {fileID: 1105364797585026900, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
       propertyPath: m_Name
       value: Combat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105364797585026900, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3470949196244280801, guid: 1808d0ff9e6fe614eafda430ed242591, type: 3}
       propertyPath: m_Size.y
