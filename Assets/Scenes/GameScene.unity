@@ -1056,10 +1056,10 @@ MonoBehaviour:
   fishSwapManager: {fileID: 0}
   levelManager: {fileID: 0}
   enemyList:
-  - {fileID: 828901064}
   - {fileID: 575316087}
+  - {fileID: 828901064}
   screenShakeSource: {fileID: 699800829}
-  fishHealthManager: {fileID: 0}
+  fishHealthManager: {fileID: 1487896385}
 --- !u!4 &699800831
 Transform:
   m_ObjectHideFlags: 0
