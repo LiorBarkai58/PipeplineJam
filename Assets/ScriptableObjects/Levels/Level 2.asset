@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level 2
   m_EditorClassIdentifier: 
   LevelSegmentsPrefabs:
-  - {fileID: 1421661225578187705, guid: 8e39ea41eb68dbf4f8ac8ccf1123d2ab, type: 3}
-  - {fileID: 1421661225578187705, guid: 8e39ea41eb68dbf4f8ac8ccf1123d2ab, type: 3}
-  - {fileID: 1421661225578187705, guid: 8e39ea41eb68dbf4f8ac8ccf1123d2ab, type: 3}
-  - {fileID: 1421661225578187705, guid: 8e39ea41eb68dbf4f8ac8ccf1123d2ab, type: 3}
-  LevelEndPrefab: {fileID: 6406717662576635762, guid: 937b046b3d3aeb443b81ba87842f63b7, type: 3}
+  - {fileID: 1421661225578187705, guid: 298a58f29848b9b469357a57bef3dce3, type: 3}
+  - {fileID: 1421661225578187705, guid: 76045ce9a7a32d34c993c5a80a7127d8, type: 3}
+  - {fileID: 1421661225578187705, guid: 9cc72da88400ab14fb4aa841ae3f2b85, type: 3}
+  - {fileID: 1421661225578187705, guid: fd4d586dfb9fff041b4fbcba9442cb01, type: 3}
+  LevelEndPrefab: {fileID: 6406717662576635762, guid: 246c075d1a808544c9c4ea9059612bf3, type: 3}
